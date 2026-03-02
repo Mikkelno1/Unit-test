@@ -16,6 +16,7 @@ public class Main
         int month = scanner.nextInt();
         int day = scanner.nextInt();
         scanner.nextLine();
+        scanner.close();
 
         LocalDate dateOfBirth = LocalDate.of(year, month,day);
         LocalDate dateToday = LocalDate.now();

@@ -12,35 +12,101 @@ class TicketTest
 {
 
     @Test
-    void onTest()
+    void inTest()
     {
         //Arrange
-        int year = 2026;
-        int month = 03;
-        int day = 02;
+        int birthYear = 1990;
+        int month = 11;
+        int day = 11;
 
         //Act
-        LocalDate dateOfBirth = LocalDate.of(year, month, day);
-        LocalDate today = LocalDate.now();
+        LocalDate today = LocalDate.of(2020,11,11);
+        LocalDate dateOfBirth = LocalDate.of(birthYear,month,day);
+
+        double actual = Ticket.ticketPrice(dateOfBirth, today);
+        double expected = 60.0;
 
         //Assert
-        assertEquals(dateOfBirth,today);
+        assertEquals(expected, actual);
     }
 
     @Test
     void outTest()
     {
         //Arrange
+        int birthYear = 2020;
+        int month = 11;
+        int day = 11;
 
         //Act
+        LocalDate today = LocalDate.of(2025,11,11);
+        LocalDate dateOfBirth = LocalDate.of(birthYear,month,day);
+
+        double actual = Ticket.ticketPrice(dateOfBirth, today);
+        double expected = 30.0;
 
         //Assert
+        assertEquals(expected, actual);
     }
-    //Arrange
 
-    //Act
+    @Test
+    void onTest()
+    {
+        //Arrange
+        int birthYear = 2000;
+        int month = 11;
+        int day = 11;
 
-    //Assert
+        //Act
+        LocalDate today = LocalDate.of(2018,11,11);
+        LocalDate dateOfBirth = LocalDate.of(birthYear,month,day);
+
+        double actual = Ticket.ticketPrice(dateOfBirth, today);
+        double expected = 60.0;
+
+        //Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void offOneLessTest()
+    {
+        //Arrange
+        int birthYear = 2000;
+        int month = 11;
+        int dayOneLess = 12;
+
+        //Act
+        LocalDate today = LocalDate.of(2018,11,11);
+        LocalDate dateOfBirthOneLess = LocalDate.of(birthYear,month,dayOneLess);
+
+        double actualOneLess = Ticket.ticketPrice(dateOfBirthOneLess, today);
+        double expectedOneLess = 30.0;
+
+        //Assert
+        assertEquals(expectedOneLess, actualOneLess);
+    }
+
+    @Test
+    void offOneMoreTest()
+    {
+        //Arrange
+        int birthYear = 2000;
+        int month = 11;
+        int dayOneMore = 10;
+
+        //Act
+        LocalDate today = LocalDate.of(2018,11,11);
+        LocalDate dateOfBirthOneMore = LocalDate.of(birthYear,month,dayOneMore);
+
+        double actualOneMore = Ticket.ticketPrice(dateOfBirthOneMore, today);
+        double expectedOneMore = 60.0;
+
+        //Assert
+        assertEquals(expectedOneMore, actualOneMore);
+    }
+
+
 
 
 
